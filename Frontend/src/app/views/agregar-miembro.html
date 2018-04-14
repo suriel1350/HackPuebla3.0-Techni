@@ -1,0 +1,32 @@
+<div class="head-page" *ngIf="identity">      	
+	<h1>{{titulo}} <a [routerLink]="['/mis-proyectos',identity.id]" class="btn btn-primary">Volver a Proyectos</a></h1>	
+</div>
+
+<div *ngIf="alertMessage">
+	<div class="alert alert-info">
+		{{alertMessage}}
+	</div>
+</div>
+
+<div class="clearfix"></div>
+
+<table class="table table-hover" *ngIf="identity" style="background-color: white;">
+  <thead>
+    <tr>      
+      <th class="text-center" scope="col">Nombre</th>
+      <th class="text-center" scope="col">Matricula</th>
+      <th class="text-center" scope="col">Carrera</th>
+      <th class="text-center" scope="col">Opciones</th>      
+    </tr>
+  </thead>
+  <tbody *ngFor="let use of user; let i =index">
+    <tr>
+      <th class="text-center" scope="row">{{use.nombre}}</th>      
+      <td class="text-center">{{use.matricula}}</td>
+      <td class="text-center">{{use.carrera}}</td>
+      <td class="text-center">        
+        <button (click)="addMiembro(use.id)"  class="btn btn-sm btn-info">Agregar a Proyecto</button>
+      </td>      
+    </tr> 
+  </tbody>
+</table> 

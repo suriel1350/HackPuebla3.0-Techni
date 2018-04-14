@@ -1,0 +1,67 @@
+	<div *ngIf="identity.role == 'ROLE_USER'">
+		<div class="alert alert-info">
+		  Esta vista sólo está disponible para un administrador
+		</div>
+	</div>
+
+	<div class="head-page" *ngIf="identity">      	
+		<h1>{{titulo}} <a [routerLink]="['/inicio']" class="btn btn-primary">Volver a Inicio</a></h1>	
+	</div>
+
+	<div *ngIf="alertMessage">
+		<div class="alert alert-info">
+			{{alertMessage}}
+		</div>
+	</div>
+
+	<div *ngIf="identity.role == 'ROLE_ADMIN' && vista == 'admin'" class="col-lg-6">		
+
+		<form #registerForm="ngForm" (ngSubmit)="onSubmitRegister()" class="col-md-10">
+			<p>
+				<label>Matrícula:</label>
+				<input type="text" #matricula="ngModel" name="matricula" [(ngModel)]="user_register.matricula" class="form-control" required />
+				<span *ngIf="!matricula.valid && matricula.touched">
+					La matricula es obligatoria
+				</span>
+			</p>
+
+			<p>
+				<label>Nombre:</label>
+				<input type="text" #nombre="ngModel" name="nombre" [(ngModel)]="user_register.nombre" class="form-control" required />
+				<span *ngIf="!nombre.valid && nombre.touched">
+					El nombre es obligatorio
+				</span>
+			</p>
+
+			<p>
+				<label>Carrera:</label>
+				<input type="text" #carrera="ngModel" name="carrera" [(ngModel)]="user_register.carrera" class="form-control" required />
+				<span *ngIf="!carrera.valid && carrera.touched">
+					La carrera es obligatoria
+				</span>
+			</p>
+
+			
+				<div class="form-group">
+				    <label>Role:</label>
+				    <select class="form-control" name="role" [(ngModel)]="user_register.role" required>
+				      <option>ROLE_ADMIN</option>
+				      <option>ROLE_USER</option>				      
+				    </select>
+			  	</div>
+			
+
+			<p>
+				<label>Contraseña:</label>
+				<input type="password" #password="ngModel" name="password" [(ngModel)]="user_register.password" class="form-control" required />
+				<span *ngIf="!password.valid && password.touched">
+					La contraseña es obligatoria
+				</span>
+			</p>
+			
+			<div *ngIf="matricula.valid && nombre.valid && carrera.valid && password.valid">  
+				<input type="submit" value="Registrar Miembro" class="btn btn-primary" />
+      		</div>
+		
+		</form> 
+	</div>

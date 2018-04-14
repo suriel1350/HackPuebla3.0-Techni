@@ -1,0 +1,53 @@
+<div class="head-page" *ngIf="identity">        
+  <h1>{{titulo}} <a [routerLink]="['/']" class="btn btn-primary">Volver a Inicio</a></h1> 
+</div>
+
+<div *ngIf="alertMessage">
+  <div class="alert alert-info">
+    {{alertMessage}}
+  </div>
+</div>
+
+<div *ngIf="identity" class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-12">
+  <div>
+    <form #loginForm="ngForm" (ngSubmit)="onSubmit()">
+      <p>
+        <label>Nombre Proyecto</label>
+        <input type="text" #nombre="ngModel" name="nombre" [(ngModel)]="proyecto.nombre" class="form-control" required>
+        <span *ngIf="!nombre.valid && nombre.touched">
+          El nombre es obligatorio
+        </span>
+      </p>
+      <p>
+        <label>Visión</label>
+        <input required type="text" #vision="ngModel" name="vision" [(ngModel)]="proyecto.vision" class="form-control">        
+      </p>
+      <p>
+        <label>Background</label>
+        <textarea type="text" #background="ngModel" name="background" [(ngModel)]="proyecto.background" class="form-control"></textarea>        
+      </p>
+      <p>
+        <label>Riesgos</label>
+        <input type="text" #riesgos="ngModel" name="riesgos" [(ngModel)]="proyecto.riesgos" class="form-control">        
+      </p>
+      <p>
+        <label>Alcance</label>
+        <input type="text" #alcance="ngModel" name="alcance" [(ngModel)]="proyecto.alcance" class="form-control">        
+      </p>
+      <p>
+        <label>Fecha Inicio</label>
+        <input type="date" #fechainicio="ngModel" name="fechainicio" [(ngModel)]="proyecto.fechainicio" class="form-control">        
+      </p>
+      <p>
+        <label>Fecha Final</label>
+        <input type="date" #fechafinal="ngModel" name="fechafinal" [(ngModel)]="proyecto.fechafinal" class="form-control">        
+      </p>
+      
+      <div *ngIf="nombre.valid">  
+        <input type="submit" value="Crear" class="btn btn-primary">
+      </div>
+    </form>
+  </div>  
+</div>
+
+

@@ -1,0 +1,65 @@
+<div class="head-page" *ngIf="identity">      	
+	<h1>{{titulo}} <a [routerLink]="['/']" class="btn btn-primary">Volver a Inicio</a></h1>	
+</div>
+
+<div *ngIf="alertMessage">
+	<div class="alert alert-info">
+		{{alertMessage}}
+	</div>
+</div>
+
+<div class="clearfix"></div>
+
+<table class="table table-hover" *ngIf="identity" style="background-color: white;">
+  <thead>
+    <tr>
+      <th class="text-center" scope="col">id</th>
+      <th class="text-center" scope="col">Nombre</th>
+      <th class="text-center" scope="col">Miembros</th>
+      <th class="text-center" scope="col">Role</th>
+      <th class="text-center" scope="col">Opciones</th>
+    </tr>
+  </thead>
+  <tbody *ngFor="let proyect of proyecto">
+    <tr> 
+      <th class="text-center" scope="row">{{proyect.id}}</th>
+      <td class="text-center">{{proyect.nombre}}</td>
+      <td class="text-center">{{proyect.idproyectos.length}}</td>
+      <td class="text-center">{{proyect.role}}</td>
+      <td class="text-center">
+      	<a [routerLink]="['/detalles-proyecto',proyect.id]" class="btn btn-sm btn-primary">Detalles</a>
+        <a [routerLink]="['/update-project',proyect.id]" class="btn btn-sm btn-success">Editar</a>
+        <a [routerLink]="['/agregar-miembro',proyect.id]" class="btn btn-sm btn-info">Agregar Miembros</a>
+        <button (click)="eliminarProyecto(proyect.id)"  class="btn btn-sm btn-danger">Borrar</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="jumbotron" *ngIf="identity">
+    <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12" >
+      <div class="panel panel-info">
+        <div class="panel-heading">
+          <h3 class="panel-title text-center">Proyectos en los que estoy:</h3>
+        </div>
+        
+          <div class="text-center panel-body">
+            <table class="table table-hover table-responsive" style="background-color: white;">
+              <thead>
+                <tr>
+                  <th class="text-center" scope="col">Nombre del Proyecto</th>
+                  <th class="text-center" scope="col">TSCRUM MASTER</th>
+                </tr>
+              </thead>
+              <tbody *ngFor="let mipro of detalles">
+                <tr> 
+                  <th class="text-center" scope="row">{{mipro.idproyecto}}</th>
+                  <td class="text-center">{{mipro.idmiembro}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div> 
+        
+      </div>  
+  </div>  
+</div>

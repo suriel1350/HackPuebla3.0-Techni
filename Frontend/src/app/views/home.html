@@ -1,0 +1,23 @@
+<div class="col-lg-11 col-md-11 col-sm-10 col-xs-9">
+	<div class="jumbotron">
+		<h1>Bienvenido a τέχνη</h1>
+		<p>Resultados de analisis</p>
+		<table class="table table-hover" style="background-color: white;">
+	  <thead>
+	    <tr>
+	      <th class="text-center" scope="col">Id</th>
+	      <th class="text-center" scope="col">Opciones</th>
+
+	    </tr>
+	  </thead>
+	  <tbody *ngFor="let use of analisis; let i = index">
+	    <tr>
+	      <th class="text-center" scope="row">Experimento # {{i+1}}</th>
+	      <td class="text-center">
+	        <a [routerLink]="['/detalles-analisis',use._id]" class="btn btn-sm btn-success">Detalles</a>
+	      </td>
+	    </tr>
+	  </tbody>
+	</table>
+	</div>
+</div>

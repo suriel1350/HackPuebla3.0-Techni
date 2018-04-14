@@ -1,0 +1,26 @@
+{
+  "name": "hackpuebla3.0",
+  "version": "1.0.0",
+  "description": "API Rest in NodeJS to HackPuebla",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Surielboys",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "connect-multiparty": "^2.1.0",
+    "crypto": "^1.0.1",
+    "express": "^4.16.3",
+    "http-status": "^1.0.1",
+    "moment": "^2.22.0",
+    "mongoose": "^5.0.14",
+    "mongoose-pagination": "^1.0.0",
+    "socket.io": "^2.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.17.3"
+  }
+}

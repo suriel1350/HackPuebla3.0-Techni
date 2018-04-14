@@ -1,0 +1,122 @@
+<div class="head-page" *ngIf="identity">      	
+	<h1>{{titulo}} <a [routerLink]="['/mis-proyectos',identity.id]" class="btn btn-primary">Volver a Proyectos</a></h1>	
+</div>
+
+<div *ngIf="alertMessage">
+	<div class="alert alert-info">
+		{{alertMessage}}
+	</div>
+</div>
+
+<div class="jumbotron" *ngIf="identity">
+	<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+		<div class="panel panel-info">
+		  <div class="panel-heading">
+		    <h3 class="panel-title">Nombre:</h3>
+		  </div>
+		  <div class="panel-body">
+		    {{project.nombre}}
+		  </div>
+		</div>  
+	</div>	
+
+	<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+		<div class="panel panel-info">
+		  <div class="panel-heading">
+		    <h3 class="panel-title">Visión:</h3>
+		  </div>
+		  <div class="panel-body">
+		    {{project.vision}}
+		  </div>
+		</div>  
+	</div>	
+
+	<div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+		<div class="panel panel-info">
+		  <div class="panel-heading">
+		    <h3 class="panel-title">Background:</h3>
+		  </div>
+		  <div class="panel-body">
+		    {{project.background}}
+		  </div>
+		</div>  
+	</div>	
+
+	<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+		<div class="panel panel-info">
+		  <div class="panel-heading">
+		    <h3 class="panel-title">Riesgos:</h3>
+		  </div>
+		  <div class="panel-body">
+		    {{project.riesgos}}
+		  </div>
+		</div>  
+	</div>	
+
+	<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+		<div class="panel panel-info">
+		  <div class="panel-heading">
+		    <h3 class="panel-title">Alcance:</h3>
+		  </div>
+		  <div class="panel-body">
+		    {{project.alcance}}
+		  </div>
+		</div>  
+	</div>	
+
+	<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+		<div class="panel panel-info">
+		  <div class="panel-heading">
+		    <h3 class="panel-title">Fecha Inicio:</h3>
+		  </div>
+		  <div class="panel-body">
+		    {{project.fechainicio}}
+		  </div>
+		</div>  
+	</div>	
+
+	<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+		<div class="panel panel-info">
+		  <div class="panel-heading">
+		    <h3 class="panel-title">Fecha Final:</h3>
+		  </div>
+		  <div class="panel-body">
+		    {{project.fechafinal}}
+		  </div>
+		</div>  
+	</div>	
+
+	<div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12" >
+		<div class="panel panel-info">
+		  <div class="panel-heading">
+		    <h3 class="panel-title text-center">Miembros:</h3>
+		  </div>
+		  
+			  <div class="text-center panel-body">
+					<table class="table table-hover table-responsive" style="background-color: white;">
+					  <thead>
+					    <tr>
+					      <th class="text-center" scope="col">Matricula</th>
+					      <th class="text-center" scope="col">Nombre</th>
+					      <th class="text-center" scope="col">Carrera</th>
+					      <th class="text-center" scope="col">Role</th>
+					      <th class="text-center" scope="col">Opciones</th>
+					    </tr>
+					  </thead>
+					  <tbody *ngFor="let miembro of miembros; let i =index">
+					    <tr> 
+					      <th class="text-center" scope="row">{{miembro.matricula}}</th>
+					      <td class="text-center">{{miembro.nombre}}</td>
+					      <td class="text-center">{{miembro.carrera}}</td>
+					      <td class="text-center">{{miembrosAux[i]}}</td>
+					      <td class="text-center">
+							<button (click)="eliminarMiembro(miembro.id)" class="btn btn-sm btn-danger">Eliminar</button>        	
+					      </td>
+					    </tr>
+					  </tbody>
+					</table>
+			  </div> 
+		  
+		</div>  
+	</div>	
+</div>
